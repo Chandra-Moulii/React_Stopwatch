@@ -1,0 +1,251 @@
+/* Basic reset */
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  scroll-padding-top: 1rem;
+  -webkit-box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+}
+
+::-webkit-input-placeholder,
+::-ms-input-placeholder,
+:-ms-input-placeholder,
+::-moz-placeholder,
+::placeholder {
+  opacity: 0.7;
+}
+
+body {
+  user-select: none;
+  display: grid;
+  overflow-x: hidden;
+  place-items: center;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
+}
+
+li {
+  list-style: none;
+}
+
+button,
+input {
+  display: block;
+  font-size: unset;
+  padding: 0.4rem 0.5rem;
+}
+
+/* Your color schemes & spacings */
+
+:root {
+  /* Spacing */
+  --space: 0.7rem;
+  /* Colors */
+  --white: #ffffff;
+  --error: #e01818;
+  --success: #5d9c59;
+  --black: #000000;
+  --accent-1: #ff7034;
+  --accent-2: #3f497f;
+  --primary: #363636;
+  --accent-1-hover: #ff5b15;
+  --accent-2-hover: #3647b5;
+}
+
+/* Utility classes */
+
+.u-flex {
+  gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  -ms-flex-wrap: wrap;
+  display: -ms-flexbox;
+  -ms-flex-align: center;
+  -ms-flex-pack: justify;
+  -webkit-box-pack: justify;
+  -webkit-box-align: center;
+  justify-content: space-between;
+}
+
+/* Page styles */
+
+.App {
+  margin: 2rem 0;
+}
+
+/* Header */
+
+header {
+  position: relative;
+  color: var(--primary);
+}
+
+header h1 {
+  font-weight: normal;
+  font-size: 1.1rem;
+  opacity: 0.6;
+}
+
+header p {
+  font-size: 6rem;
+}
+header p .s {
+  margin-left: 0.5rem;
+  font-size: 3.5rem;
+}
+
+/* Options */
+
+.options {
+  padding: 1rem 0;
+  position: relative;
+}
+
+.options:after {
+  left: 50%;
+  top: 0;
+  content: "";
+  width: 100%;
+  height: 3px;
+  transform: translateX(-50%);
+  background-color: var(--primary);
+  position: absolute;
+}
+
+.options.active:after {
+  background-color: var(--success);
+  animation: blink 0.5s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes blink {
+  from {
+    width: 5%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.options button {
+  flex-grow: 1;
+  border: none;
+  outline: none;
+  color: white;
+  border-radius: 0.2rem;
+  transition: all 0.2s ease;
+}
+
+.options button.none {
+  display: none;
+}
+
+.options button:first-child {
+  background-color: var(--success);
+}
+
+.options button:first-child:hover,
+.options button:first-child:focus-visible {
+  background-color: #3e9639;
+  box-shadow: 0px 3px 8px 1px #88ff7f;
+}
+
+.options button:nth-of-type(2) {
+  background-color: var(--error);
+}
+
+.options button:nth-of-type(2):hover,
+.options button:nth-of-type(2):focus-visible {
+  background-color: #eb0909;
+  box-shadow: 0px 3px 8px 1px #ff9494;
+}
+
+.options button:last-child {
+  background-color: var(--accent-2);
+}
+.options button:last-child:hover,
+.options button:last-child:focus-visible {
+  box-shadow: 0px 3px 8px 1px #99a9ff;
+  background-color: var(--accent-2-hover);
+}
+
+/* Search */
+input {
+  width: 100%;
+  margin: 0.5rem 0;
+  border: 1px solid var(--primary);
+  border-radius: 0.2rem;
+}
+
+/* Laps */
+.laps {
+  font-size: 1.1rem;
+  margin: 1.5rem 0;
+  max-height: 400px;
+}
+
+.laptitle {
+  font-weight: normal;
+  margin-top: 1rem;
+}
+
+.laps div {
+  padding: 0.3rem;
+  margin: var(--space) 0;
+  animation: slide 0.5s ease;
+  border-bottom: 1px solid var(--primary);
+}
+
+.laps div:last-child {
+  border: none;
+}
+
+@keyframes slide {
+  from {
+    opacity: 0.3;
+    transform: translateX(100px);
+  }
+  50% {
+    transform: translateX(-30px);
+  }
+}
+
+.laps div span:first-child {
+  flex-basis: 4rem;
+}
+
+.laps div span:nth-of-type(2) {
+  flex-grow: 2;
+  padding-left: 1.5rem;
+}
+
+.laps div span:last-child {
+  scale: 2.5;
+  cursor: pointer;
+  color: var(--error);
+}
+
+/* Media queires */
+
+@media (prefers-color-scheme: dark) {
+}
+
+@media (max-width: 600px) {
+  .App {
+    width: 90vw;
+  }
+  header p {
+    font-size: 3.5rem;
+  }
+  .options button {
+    padding: 0.3rem 1rem;
+  }
+}
